@@ -42,7 +42,7 @@ const Hyperlink = ({
   content = ''} = props = {}
 ) => {
   return `
-    <a href="${href}" class="a ${className}">
+    <a href="${href}" class="a ${className}" target="_blank" rel="noopener">
       ${content}
     </a>
   `
@@ -51,7 +51,7 @@ const Hyperlink = ({
 // Containers
 const Header = () => {
   return `
-    <div class="flex width100 backgroundColorBlack flexJustifyCenter">
+    <header class="flex width100 backgroundColorBlack flexJustifyCenter">
       <div class="flex flexGrow1 flexAlignItemCenter flexJustifySpaceBetween containerDesktop paddingLeftSmall paddingRightSmall paddingTopSmall paddingBottomSmall">
         <div>
           ${LogoIcon()}
@@ -64,7 +64,7 @@ const Header = () => {
           })}
         </div>
       </div>
-    </div>
+    </header>
   `
 }
 const SubHeader = () => {
@@ -96,7 +96,7 @@ const App = () => {
             ${Hyperlink({
               className: 'colorBlue',
               content: 'ThemeForest',
-              href: 'https://themeforest.com'
+              href: 'https://themeforest.net/'
             })}!
             Grab 'em while they're hot!
           `
