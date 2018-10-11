@@ -5,12 +5,24 @@
     <title>Test Runner</title>
   </head>
   <body>
-    <script src='script.js'></script>
-    <script src="https://npmcdn.com/expect/umd/expect.min.js"></script>
+    <script src='script.js' rel="preload" as="script" ></script>
+    <script src="https://unpkg.com/expect@%3C21/umd/expect.min.js" rel="preload"  as="script"></script>
     <script>
-      // Tests
-      // Failing tests can be seen in your browser console
-      expect(false).toBe(true)
+      // Tests      
+      expect(true).toBe(true) 
+      
+      // Components
+      const testLogoIcon = () => {
+        expect(LogoIcon).toExist()
+        expect(LogoIcon).toBeA('function')
+        expect(LogoIcon()).toBeA('string')
+      }
+
+      const callTests = () => {
+        testLogoIcon()
+      }
+
+      callTests()
     </script>
   </body>
 </html>
