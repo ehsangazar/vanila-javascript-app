@@ -52,7 +52,7 @@ const Image = ({
   className = '', 
 }) => {
   return `
-    <img src="${src}" />
+    <img className="${className}" src="${src}" />
   `
 }
 
