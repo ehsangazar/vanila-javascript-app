@@ -56,6 +56,16 @@
         expect(App()).toBeA('string')
       }
 
+      // Services
+      const testFetchMarketPlaceAPI = async () => {
+        expect(fetchMarketPlaceAPI).toExist()
+        expect(fetchMarketPlaceAPI).toBeA('function')
+        
+        const response = await fetchMarketPlaceAPI()
+        expect(response.status).toEqual('ok')
+        expect(response.res.popular).toExist()
+      }
+
       const callTests = () => {
         testLogoIcon()
         testHeading()
@@ -63,6 +73,7 @@
         testParagraph()
         testHyperlink()
         testSubHeader()
+        testFetchMarketPlaceAPI()
         testApp()
       }
 

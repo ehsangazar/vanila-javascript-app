@@ -118,4 +118,37 @@ _replaceDOM = (id, html = '') => {
   }
 }
 
+_fetchAPI = async ({method='GET', endPoint = ''}) => {
+  const token = "Bearer HzC4A4bKKMyvVBydyHnSBv1hg8S5y4VW"
+  try {
+    const response = await fetch(endPoint, {
+      method: method,
+      headers: {
+        Authorization: token
+      }
+    })
+    const res = await response.json()
+    return {
+      status: 'ok',
+      res
+    }
+  } catch(error) {
+    return {
+      status: 'error',
+      error: error
+    }
+  }
+}
+
+// Services
+const fetchMarketPlaceAPI = () => {
+  const endPoint  = 'https://api.envato.com/v1/market/popular:themeforest.json'
+  return _fetchAPI({
+    endPoint: endPoint
+  })
+}
+
+
+
 _replaceDOM('App',App());
+
