@@ -52,9 +52,6 @@ const Button = ({
   </button>
   `
 }
-const onClickAgain = (e) => {
-  console.log('sskamskaj',e)
-}
 
 const Hyperlink = ({
   className = '', 
@@ -113,31 +110,93 @@ const SubHeader = () => {
 const CardHorizontal = ({
   src='',
   title='',
-  rating='', 
+  href='',
+  rating=1, 
   onClick= () => {}
 } = props = {}) => {
   return `
-    <div class="flex backgroundColorGrey width100 borderRadiusSmall paddingLeftSmall paddingRightSmall paddingTopSmall paddingBottomSmall">      
-      <div>
+    <div class="flex height100 ${Number(rating) === 5?'backgroundColorYellow':'backgroundColorGrey'} width100 borderRadiusSmall paddingLeftSmall paddingRightSmall paddingTopSmall paddingBottomSmall">      
+      <div class="flex flexAlignItemCenter">
         ${Image({
-          src:'https://s3.envato.com/files/181661922/profile_icon.png',
+          src: src,
         })}
       </div>
       <div class="paddingLeftSmall lineHeight1">
         ${Hyperlink({
           className: 'colorBlue h3 strong',
-          content: 'This is an item',
-          href: 'https://themeforest.net/'
+          content: title,
+          href: href
         })}
         ${Heading({
           className:'colorGrey',
-          content:'Welcome back, Ehsan!',
+          content:`Rating ${rating}`,
           number: 4
         })}
         ${Button({
           onClick: onClick,
           className: 'colorRed strong',
           content: 'Remove' 
+        })}
+      </div>
+    </div>
+  `
+}
+
+const MarketPlaceList = (response = null) => {
+  if (!response){
+    setTimeout(async ()=>{
+      const response = await fetchMarketPlaceAPI()
+      _replaceDOM('MarketPlaceList',MarketPlaceList(response));
+    },10)  
+    return `
+      <div id="MarketPlaceList">
+        <div class="flex flexJustifyCenter flexAlignItemCenter h2">
+          Loading ...
+        </div>
+      </div>
+    `
+  }else if (
+    response.status === 'ok' 
+    && response.res
+    && response.res.popular
+    && response.res.popular.items_last_week
+    && response.res.popular.items_last_week.length
+    && response.res.popular.items_last_week.length > 0
+  ){
+    if (!response.removedItems) response.removedItems = []
+    const filteredResponse = response.res.popular.items_last_week.filter(item => !response.removedItems.includes(item.id))
+    return `
+      <div class="flex flexJustifyCenter">
+        <div class="flex width100 flexJustifyCenter containerDesktop paddingLeftSmall paddingRightSmall flexWrap">
+          ${filteredResponse.map((item)=>{
+            return `
+              <div class="width50 width100Tablet flexNoShrink paddingLeftSmall paddingRightBig paddingTopSmall paddingBottomSmall">
+                ${CardHorizontal({
+                  src:item.thumbnail,
+                  title:item.item,
+                  href:item.url,
+                  rating:item.rating, 
+                  onClick: () => {                    
+                    response.removedItems.push(item.id)
+                    _replaceDOM('MarketPlaceList',MarketPlaceList(response));
+                  }
+                })}
+              </div>`
+          }).join('')}
+        </div>
+      </div>
+    `
+  }
+  return `
+    <div id="MarketPlaceList">
+      <div class="flex flexDirectionColumn flexJustifyCenter flexAlignItemCenter h2">
+        Something went wrong, 
+        <br />
+        <br />
+        ${Button({
+          onClick: MarketPlaceList,
+          className: 'colorBlue strong',
+          content: 'Please Try Again' 
         })}
       </div>
     </div>
@@ -166,30 +225,7 @@ const App = () => {
           })}
         </div>        
       </div>
-      <div class="flex flexJustifyCenter">
-        <div class="flex width100 containerDesktop paddingLeftSmall paddingRightSmall flexWrap">
-          <div class="flexGrow1 width50 width100Tablet flexNoShrink paddingLeftSmall paddingRightBig paddingTopSmall paddingBottomSmall">
-            ${CardHorizontal({
-              onClick: () => console.log(1)
-            })}
-          </div>
-          <div class="flexGrow1 width50 width100Tablet flexNoShrink paddingLeftSmall paddingRightBig paddingTopSmall paddingBottomSmall">
-            ${CardHorizontal({
-              onClick: () => console.log(2)
-            })}
-          </div>
-          <div class="flexGrow1 width50 width100Tablet flexNoShrink paddingLeftSmall paddingRightBig paddingTopSmall paddingBottomSmall">
-            ${CardHorizontal({
-              onClick: () => console.log(3)
-            })}
-          </div>
-          <div class="flexGrow1 width50 width100Tablet flexNoShrink paddingLeftSmall paddingRightBig paddingTopSmall paddingBottomSmall">
-            ${CardHorizontal({
-              onClick: () => console.log(4)
-            })}
-          </div>
-        </div>
-      </div>
+      ${MarketPlaceList()}
     </div>
   `
   return resultHTML
@@ -200,7 +236,7 @@ _replaceDOM = (id, html = '') => {
   if(id && id != '') {
     const foundDOM = document.getElementById(id)
     if (foundDOM){
-      foundDOM.outerHTML = html
+      foundDOM.innerHTML = html
     }
   }
 }

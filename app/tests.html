@@ -65,6 +65,11 @@
         expect(CardHorizontal).toBeA('function')
         expect(CardHorizontal()).toBeA('string')
       }
+      const testMarketPlaceList = () => {
+        expect(MarketPlaceList).toExist()
+        expect(MarketPlaceList).toBeA('function')
+        expect(MarketPlaceList()).toBeA('string')
+      }
 
       // Pages
       const testApp = () => {
@@ -92,6 +97,7 @@
         testImage()
         testButton()
         testHyperlink()
+        testMarketPlaceList()
         testSubHeader()
         testFetchMarketPlaceAPI()
         testApp()
