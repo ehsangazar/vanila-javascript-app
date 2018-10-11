@@ -115,7 +115,7 @@ const CardHorizontal = ({
   onClick= () => {}
 } = props = {}) => {
   return `
-    <div class="flex height100 ${Number(rating) === 5?'backgroundColorYellow':'backgroundColorGrey'} width100 borderRadiusSmall paddingLeftSmall paddingRightSmall paddingTopSmall paddingBottomSmall">      
+    <div data-test="CardHorizontal" class="flex height100 ${Number(rating) === 5?'backgroundColorYellow':'backgroundColorGrey'} width100 borderRadiusSmall paddingLeftSmall paddingRightSmall paddingTopSmall paddingBottomSmall">      
       <div class="flex flexAlignItemCenter">
         ${Image({
           src: src,
@@ -165,10 +165,13 @@ const MarketPlaceList = (response = null) => {
   ){
     if (!response.removedItems) response.removedItems = []
     const filteredResponse = response.res.popular.items_last_week.filter(item => !response.removedItems.includes(item.id))
+    const sortedResponse = filteredResponse.sort((itemA, itemB) => {
+      return (Number(itemB.rating_decimal) - Number(itemA.rating_decimal))
+    })
     return `
       <div class="flex flexJustifyCenter">
         <div class="flex width100 flexJustifyCenter containerDesktop paddingLeftSmall paddingRightSmall flexWrap">
-          ${filteredResponse.map((item)=>{
+          ${sortedResponse.map((item)=>{
             return `
               <div class="width50 width100Tablet flexNoShrink paddingLeftSmall paddingRightBig paddingTopSmall paddingBottomSmall">
                 ${CardHorizontal({

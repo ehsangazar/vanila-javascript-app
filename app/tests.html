@@ -65,10 +65,17 @@
         expect(CardHorizontal).toBeA('function')
         expect(CardHorizontal()).toBeA('string')
       }
-      const testMarketPlaceList = () => {
+      const testMarketPlaceList = async () => {
         expect(MarketPlaceList).toExist()
         expect(MarketPlaceList).toBeA('function')
         expect(MarketPlaceList()).toBeA('string')
+        expect(MarketPlaceList()).toMatch(/Loading/)
+        expect(MarketPlaceList({
+          status: 'error'
+        })).toMatch(/Something went wrong/)        
+        const response = await fetchMarketPlaceAPI()
+        const RenderedWithResponse = MarketPlaceList(response)
+        expect(RenderedWithResponse).toMatch(/CardHorizontal/)
       }
 
       // Pages
