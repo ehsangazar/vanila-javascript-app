@@ -30,6 +30,12 @@
         expect(Paragraph()).toBeA('string')
       }
 
+      const testHyperlink = () => {
+        expect(Hyperlink).toExist()
+        expect(Hyperlink).toBeA('function')
+        expect(Hyperlink()).toBeA('string')
+      }
+
 
       // Containers
       const testHeader = () => {
@@ -55,6 +61,7 @@
         testHeading()
         testHeader()
         testParagraph()
+        testHyperlink()
         testSubHeader()
         testApp()
       }

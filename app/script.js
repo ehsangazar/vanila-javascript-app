@@ -24,6 +24,7 @@ const Heading = ({
     </h${number}>
   `
 }
+
 const Paragraph = ({
   className = '', 
   content = ''} = props = {}
@@ -32,6 +33,18 @@ const Paragraph = ({
     <p class="p ${className}">
       ${content}
     </p>
+  `
+}
+
+const Hyperlink = ({
+  className = '', 
+  href= '',
+  content = ''} = props = {}
+) => {
+  return `
+    <a href="${href}" class="a ${className}">
+      ${content}
+    </a>
   `
 }
 
@@ -80,7 +93,11 @@ const App = () => {
           className:'colorBlack textAlignCenter h3',
           content:`
             Here are this week's most popular themes & templates from 
-            <a href="">ThemeForest</a>! 
+            ${Hyperlink({
+              className: 'colorBlue',
+              content: 'ThemeForest',
+              href: 'https://themeforest.com'
+            })}!
             Grab 'em while they're hot!
           `
         })}
