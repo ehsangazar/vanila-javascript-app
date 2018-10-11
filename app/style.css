@@ -45,7 +45,7 @@ table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
-
+/* Griding */
 .flex {
   display: flex;
 }
@@ -58,7 +58,37 @@ table {
 .minHeight800vh {
   min-height: 80vh;
 }
+
 /* font */
 .h1 {
   font-size: 2em;
+}
+.colorBlack {
+  color: #484848;
+}
+.colorWhite {
+  color: #ffffff;
+}
+.colorGreen {
+  color: #477d00;
+}
+.colorRed {
+  color: #d54247;
+}
+.colorBlue {
+  color: #006ab6;
+}
+.colorGrey {
+  color: #808080;
+}
+
+/* Background */
+.backgroundColorGreen {
+  background-color: #f6f9f2;  
+}
+.backgroundColorBlack {
+  background-color: #232323;
+}
+.backgroundColorGrey {
+  background-color: #e7e7e7;
 }
