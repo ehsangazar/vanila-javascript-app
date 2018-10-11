@@ -52,13 +52,24 @@ table {
 .flexJustifyCenter {
   justify-content: center;
 }
+.flexJustifySpaceBetween {
+  justify-content: space-between;
+}
 .flexAlignItemCenter {
   align-items: center;
 }
 .minHeight800vh {
   min-height: 80vh;
 }
-
+.containerDesktop {
+  max-width: 1200px;
+}
+.containerTablet {
+  max-width: 796px;
+}
+.width100 {
+  width: 100%;
+}
 /* font */
 .h1 {
   font-size: 2em;
@@ -77,6 +88,9 @@ table {
 }
 .h6 {
   font-size: 0.8em;
+}
+.lineHeight1 {
+  line-height: 1.6em;
 }
 .colorBlack {
   color: #484848;
@@ -106,4 +120,30 @@ table {
 }
 .backgroundColorGrey {
   background-color: #e7e7e7;
+}
+
+/* Paddings */
+.paddingLeftSmall {
+  padding-left: 1em;
+}
+.paddingRightSmall {
+  padding-right: 1em;
+}
+.paddingTopSmall {
+  padding-top: 1em;
+}
+.paddingBottomSmall {
+  padding-bottom: 1em;
+}
+.paddingLeftBig {
+  padding-left: 2em;
+}
+.paddingRightBig {
+  padding-right: 2em;
+}
+.paddingTopBig {
+  padding-top: 2em;
+}
+.paddingBottomBig {
+  padding-bottom: 2em;
 }
