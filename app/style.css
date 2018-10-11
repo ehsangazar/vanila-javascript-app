@@ -10,7 +10,7 @@ fieldset, form, label, legend,
 table, caption, tbody, tfoot, thead, tr, th, td,
 article, aside, canvas, details, embed, 
 figure, figcaption, footer, header, hgroup, 
-menu, nav, output, ruby, section, summary,
+menu, nav, output, ruby, section, summary, button,
 time, mark, audio, video {
 	margin: 0;
 	padding: 0;
@@ -18,7 +18,9 @@ time, mark, audio, video {
 	font-size: 100%;
 	font: inherit;
 	vertical-align: baseline;
-	box-sizing: border-box;
+  box-sizing: border-box;
+  border: none;
+  background: transparent;
 }
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure, 
@@ -55,6 +57,12 @@ table {
 .flexGrow1 {
   flex-grow: 1;
 }
+.flexWrap {
+  flex-wrap: wrap;
+}
+.flexNoShrink {
+  flex-shrink: 0;
+}
 .flexJustifySpaceBetween {
   justify-content: space-between;
 }
@@ -64,18 +72,38 @@ table {
 .minHeight800vh {
   min-height: 80vh;
 }
-.containerDesktop {
+.containerDesktop, .maxWidth1200 {
   max-width: 1200px;
 }
-.containerTablet {
+.containerTablet, .maxWidth796 {
   max-width: 796px;
+}
+.containerMobile, .maxWidth540 {
+  max-width: 540px;
 }
 .width100 {
   width: 100%;
 }
+.width50 {
+  width: 50%;
+}
 /* font */
 .p {
   font-size: 1em;
+}
+.a {
+  opacity: 0.7;
+  text-decoration: none;
+}
+.a:hover {
+  opacity: 1;
+}
+.Button {
+  cursor: pointer;
+  opacity: 0.7;
+}
+.Button:hover {
+  opacity: 1;
 }
 .h1 {
   font-size: 2.8em;
@@ -119,6 +147,9 @@ table {
 .textAlignCenter {
   text-align: center;
 }
+.strong, .fontWeightBold {
+  font-weight: bold;
+}
 
 /* Background */
 .backgroundColorGreen {
@@ -160,4 +191,16 @@ table {
 /* Borders */
 .borderBottomGrey {
   border-bottom: 1px solid #484848;
+}
+.borderRadiusSmall {
+  border-radius: 5px;
+}
+
+
+/* Media Query  */
+/* Smaller than 796 */
+@media (max-width: 796px) {
+  .width100Tablet {
+    width: 100%;
+  }
 }

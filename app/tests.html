@@ -41,6 +41,12 @@
         expect(Image).toBeA('function')
         expect(Image()).toBeA('string')
       }
+      
+      const testButton = () => {
+        expect(Button).toExist()
+        expect(Button).toBeA('function')
+        expect(Button()).toBeA('string')
+      }
 
 
       // Containers
@@ -53,6 +59,11 @@
         expect(SubHeader).toExist()
         expect(SubHeader).toBeA('function')
         expect(SubHeader()).toBeA('string')
+      }
+      const testCardHorizontal = () => {
+        expect(CardHorizontal).toExist()
+        expect(CardHorizontal).toBeA('function')
+        expect(CardHorizontal()).toBeA('string')
       }
 
       // Pages
@@ -76,8 +87,10 @@
         testLogoIcon()
         testHeading()
         testHeader()
+        testCardHorizontal()
         testParagraph()
         testImage()
+        testButton()
         testHyperlink()
         testSubHeader()
         testFetchMarketPlaceAPI()

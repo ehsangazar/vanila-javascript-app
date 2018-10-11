@@ -36,6 +36,26 @@ const Paragraph = ({
   `
 }
 
+const Button = ({
+  refNumber = Math.random(),
+  className = '', 
+  content = '',
+  onClick = () => {}
+} = props = {}) => {
+  if(!this.ButtonOnClick) this.ButtonOnClick = {}  
+  this.ButtonOnClick[refNumber] = onClick
+  return `
+  <button 
+    class="Button ${className}" 
+    onclick="ButtonOnClick[${refNumber}]()">
+    ${content}
+  </button>
+  `
+}
+const onClickAgain = (e) => {
+  console.log('sskamskaj',e)
+}
+
 const Hyperlink = ({
   className = '', 
   href= '',
@@ -81,9 +101,43 @@ const SubHeader = () => {
     <div class="flex width100 backgroundColorGreen flexJustifyCenter borderBottomGrey">
       <div class="flex flexGrow1 containerDesktop flexAlignItemCenter paddingLeftSmall paddingRightSmall paddingTopBig paddingBottomBig">
         ${Heading({
-          className:'colorGreen',
+          className:'colorGreen strong',
           content:'Popular Items',
           number: 1
+        })}
+      </div>
+    </div>
+  `
+}
+
+const CardHorizontal = ({
+  src='',
+  title='',
+  rating='', 
+  onClick= () => {}
+} = props = {}) => {
+  return `
+    <div class="flex backgroundColorGrey width100 borderRadiusSmall paddingLeftSmall paddingRightSmall paddingTopSmall paddingBottomSmall">      
+      <div>
+        ${Image({
+          src:'https://s3.envato.com/files/181661922/profile_icon.png',
+        })}
+      </div>
+      <div class="paddingLeftSmall lineHeight1">
+        ${Hyperlink({
+          className: 'colorBlue h3 strong',
+          content: 'This is an item',
+          href: 'https://themeforest.net/'
+        })}
+        ${Heading({
+          className:'colorGrey',
+          content:'Welcome back, Ehsan!',
+          number: 4
+        })}
+        ${Button({
+          onClick: onClick,
+          className: 'colorRed strong',
+          content: 'Remove' 
         })}
       </div>
     </div>
@@ -111,6 +165,30 @@ const App = () => {
             `
           })}
         </div>        
+      </div>
+      <div class="flex flexJustifyCenter">
+        <div class="flex width100 containerDesktop paddingLeftSmall paddingRightSmall flexWrap">
+          <div class="flexGrow1 width50 width100Tablet flexNoShrink paddingLeftSmall paddingRightBig paddingTopSmall paddingBottomSmall">
+            ${CardHorizontal({
+              onClick: () => console.log(1)
+            })}
+          </div>
+          <div class="flexGrow1 width50 width100Tablet flexNoShrink paddingLeftSmall paddingRightBig paddingTopSmall paddingBottomSmall">
+            ${CardHorizontal({
+              onClick: () => console.log(2)
+            })}
+          </div>
+          <div class="flexGrow1 width50 width100Tablet flexNoShrink paddingLeftSmall paddingRightBig paddingTopSmall paddingBottomSmall">
+            ${CardHorizontal({
+              onClick: () => console.log(3)
+            })}
+          </div>
+          <div class="flexGrow1 width50 width100Tablet flexNoShrink paddingLeftSmall paddingRightBig paddingTopSmall paddingBottomSmall">
+            ${CardHorizontal({
+              onClick: () => console.log(4)
+            })}
+          </div>
+        </div>
       </div>
     </div>
   `
