@@ -52,6 +52,9 @@ table {
 .flexJustifyCenter {
   justify-content: center;
 }
+.flexGrow1 {
+  flex-grow: 1;
+}
 .flexJustifySpaceBetween {
   justify-content: space-between;
 }

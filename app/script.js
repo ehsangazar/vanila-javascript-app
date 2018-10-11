@@ -28,8 +28,8 @@ const Heading = ({
 // Containers
 const Header = () => {
   return `
-    <div class="">
-      <div class="">
+    <div class="flex width100 backgroundColorBlack flexJustifyCenter">
+      <div class="flex flexGrow1 flexAlignItemCenter flexJustifySpaceBetween containerDesktop paddingLeftSmall paddingRightSmall paddingTopSmall paddingBottomSmall">
         <div>
           ${LogoIcon()}
         </div>
@@ -45,10 +45,13 @@ const Header = () => {
   `
 }
 
-
 // Pages
 const App = () => {
-  const resultHTML = 'APP'
+  const resultHTML = `
+    <div>
+      ${Header()}
+    </div>
+  `
   return resultHTML
 }
 
