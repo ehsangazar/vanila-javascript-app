@@ -49,10 +49,11 @@ const Hyperlink = ({
 }
 
 const Image = ({
+  src= '',
   className = '', 
-}) => {
+} = props = {}) => {
   return `
-    <img className="${className}" src="${src}" />
+    <img className="img ${className}" src="${src}" />
   `
 }
 
