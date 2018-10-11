@@ -48,6 +48,14 @@ const Hyperlink = ({
   `
 }
 
+const Image = ({
+  className = '', 
+}) => {
+  return `
+    <img src="${src}" />
+  `
+}
+
 // Containers
 const Header = () => {
   return `
@@ -88,20 +96,20 @@ const App = () => {
       ${Header()}
       ${SubHeader()}
       <div class="flex flexJustifyCenter">
-      <div class="flex flexGrow1 flexJustifyCenter containerTablet flexAlignItemCenter paddingTopBig paddingBottomBig paddingLeftBig paddingRightBig">
-        ${Paragraph({
-          className:'colorBlack textAlignCenter h3',
-          content:`
-            Here are this week's most popular themes & templates from 
-            ${Hyperlink({
-              className: 'colorBlue',
-              content: 'ThemeForest',
-              href: 'https://themeforest.net/'
-            })}!
-            Grab 'em while they're hot!
-          `
-        })}
-      </div>
+        <div class="flex flexGrow1 flexJustifyCenter containerTablet flexAlignItemCenter paddingTopBig paddingBottomBig paddingLeftBig paddingRightBig">
+          ${Paragraph({
+            className:'colorBlack textAlignCenter h3',
+            content:`
+              Here are this week's most popular themes & templates from 
+              ${Hyperlink({
+                className: 'colorBlue',
+                content: 'ThemeForest',
+                href: 'https://themeforest.net/'
+              })}!
+              Grab 'em while they're hot!
+            `
+          })}
+        </div>        
       </div>
     </div>
   `

@@ -36,6 +36,12 @@
         expect(Hyperlink()).toBeA('string')
       }
 
+      const testImage = () => {
+        expect(Image).toExist()
+        expect(Image).toBeA('function')
+        expect(Image()).toBeA('string')
+      }
+
 
       // Containers
       const testHeader = () => {
@@ -71,6 +77,7 @@
         testHeading()
         testHeader()
         testParagraph()
+        testImage()
         testHyperlink()
         testSubHeader()
         testFetchMarketPlaceAPI()
