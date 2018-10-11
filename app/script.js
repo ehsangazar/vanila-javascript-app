@@ -24,3 +24,42 @@ const Heading = ({
     </h${number}>
   `
 }
+
+// Containers
+const Header = () => {
+  return `
+    <div class="">
+      <div class="">
+        <div>
+          ${LogoIcon()}
+        </div>
+        <div>
+          ${Heading({
+            className:'colorWhite',
+            content:'Welcome back, Ehsan!',
+            number: 3
+          })}
+        </div>
+      </div>
+    </div>
+  `
+}
+
+
+// Pages
+const App = () => {
+  const resultHTML = 'APP'
+  return resultHTML
+}
+
+// Utils
+_replaceDOM = (id, html = '') => {
+  if(id && id != '') {
+    const foundDOM = document.getElementById(id)
+    if (foundDOM){
+      foundDOM.outerHTML = html
+    }
+  }
+}
+
+_replaceDOM('App',App());
