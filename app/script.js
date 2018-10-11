@@ -10,3 +10,17 @@ const LogoIcon = (className = '') => {
     </div>
   `
 }
+
+const Heading = ({
+  className = '', 
+  content = '', 
+  number = 1} = props = {}
+) => {
+  if (number > 6) return ''
+  if (number < 0) return ''
+  return `
+    <h${number} class="h${number} ${className}">
+      ${content}
+    </h${number}>
+  `
+}

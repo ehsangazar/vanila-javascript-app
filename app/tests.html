@@ -18,8 +18,15 @@
         expect(LogoIcon()).toBeA('string')
       }
 
+      const testHeading = () => {
+        expect(Heading).toExist()
+        expect(Heading).toBeA('function')
+        expect(Heading()).toBeA('string')
+      }
+
       const callTests = () => {
         testLogoIcon()
+        testHeading()
       }
 
       callTests()
