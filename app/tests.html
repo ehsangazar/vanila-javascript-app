@@ -23,6 +23,12 @@
         expect(Heading).toBeA('function')
         expect(Heading()).toBeA('string')
       }
+      
+      const testParagraph = () => {
+        expect(Paragraph).toExist()
+        expect(Paragraph).toBeA('function')
+        expect(Paragraph()).toBeA('string')
+      }
 
 
       // Containers
@@ -30,6 +36,11 @@
         expect(Header).toExist()
         expect(Header).toBeA('function')
         expect(Header()).toBeA('string')
+      }
+      const testSubHeader = () => {
+        expect(SubHeader).toExist()
+        expect(SubHeader).toBeA('function')
+        expect(SubHeader()).toBeA('string')
       }
 
       // Pages
@@ -43,6 +54,8 @@
         testLogoIcon()
         testHeading()
         testHeader()
+        testParagraph()
+        testSubHeader()
         testApp()
       }
 

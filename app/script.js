@@ -24,6 +24,16 @@ const Heading = ({
     </h${number}>
   `
 }
+const Paragraph = ({
+  className = '', 
+  content = ''} = props = {}
+) => {
+  return `
+    <p class="p ${className}">
+      ${content}
+    </p>
+  `
+}
 
 // Containers
 const Header = () => {
@@ -44,12 +54,38 @@ const Header = () => {
     </div>
   `
 }
+const SubHeader = () => {
+  return `
+    <div class="flex width100 backgroundColorGreen flexJustifyCenter borderBottomGrey">
+      <div class="flex flexGrow1 containerDesktop flexAlignItemCenter paddingLeftSmall paddingRightSmall paddingTopBig paddingBottomBig">
+        ${Heading({
+          className:'colorGreen',
+          content:'Popular Items',
+          number: 1
+        })}
+      </div>
+    </div>
+  `
+}
 
 // Pages
 const App = () => {
   const resultHTML = `
     <div>
       ${Header()}
+      ${SubHeader()}
+      <div class="flex flexJustifyCenter">
+      <div class="flex flexGrow1 flexJustifyCenter containerTablet flexAlignItemCenter paddingTopBig paddingBottomBig paddingLeftBig paddingRightBig">
+        ${Paragraph({
+          className:'colorBlack textAlignCenter h3',
+          content:`
+            Here are this week's most popular themes & templates from 
+            <a href="">ThemeForest</a>! 
+            Grab 'em while they're hot!
+          `
+        })}
+      </div>
+      </div>
     </div>
   `
   return resultHTML
