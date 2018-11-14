@@ -264,7 +264,7 @@ _fetchAPI = async ({method='GET', endPoint = ''}) => {
 
 // Services
 const fetchMarketPlaceAPI = () => {
-  const endPoint  = 'https://api.Github.com/v1/market/popular:themeforest.json'
+  const endPoint  = 'https://api.envato.com/v1/market/popular:themeforest.json'
   return _fetchAPI({
     endPoint: endPoint
   })
