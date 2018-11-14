@@ -1,12 +1,12 @@
-# Envato Front End Coding Test
+# Github Front End Coding Test
 
 Make sure you read **all** of this document carefully, and follow the guidelines in it. Pay particular attention to the "What We Care About" section.
 
 ## The task
 
-Build a static page (`index.html`) that fetches last week's popular items from the [Envato Market API](http://marketplace.envato.com/api/documentation) and displays them according to `mockup.png`.
+Build a static page (`index.html`) that fetches last week's popular items from the [Github Market API](http://marketplace.Github.com/api/documentation) and displays them according to `mockup.png`.
 
-Your data source is `http://marketplace.envato.com/api/edge/popular:themeforest.json`. CORS is enabled on this API.
+Your data source is `http://marketplace.Github.com/api/edge/popular:themeforest.json`. CORS is enabled on this API.
 
 - List items in order of rating, from highest to lowest.
 
